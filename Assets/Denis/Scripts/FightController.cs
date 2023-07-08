@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FightController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class FightController : MonoBehaviour
     public GameObject[] spawnPoints;
 
     public float fightTimer;
-    public GameObject time_;
+    public TMP_Text time_;
 
     public GameObject enemy;
     public GameObject[] enemies;
@@ -26,6 +27,7 @@ public class FightController : MonoBehaviour
 
     private void Awake()
     {
+        SpawnNewPlayer();
         SpawnNewEnemy(enemy);
         SpawnNewEnemy(enemy);
     }
@@ -42,10 +44,10 @@ public class FightController : MonoBehaviour
             }
         }
 
-        //if (fightTimer > 0)
-        //    time_.GetComponent<Text>().text = fightTimer.ToString("#.0");
-        //else
-        //    time_.GetComponent<Text>().text = "0,0";
+        if (fightTimer > 0)
+            time_.text = fightTimer.ToString("#.0");
+        else
+            time_.text = "0,0";
 
         var enemyNumber_ = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemyNumber_.Length <= 0)
