@@ -20,7 +20,7 @@ public class EnemyMove : MonoBehaviour
 
     private void Start()
     {
-        Invoke("Start_move", 1.5f);
+        //Invoke("Start_move", 1.5f);
     }
 
     private void Update()
@@ -58,8 +58,11 @@ public class EnemyMove : MonoBehaviour
             else if (GameObject.Find("RIP_player(Clone)") != null)
             {
                 target = GameObject.Find("RIP_player(Clone)").transform;
-                Debug.Log("12");
             }
+        }
+        else
+        {
+            transform.position = transform.position;
         }
     }
 

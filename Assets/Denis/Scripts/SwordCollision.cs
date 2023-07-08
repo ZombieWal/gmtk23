@@ -6,7 +6,7 @@ using EZCameraShake;
 public class SwordCollision : MonoBehaviour
 {
     public GameObject boom;
-    public GameObject deadBody;
+    public float damage = 50f;
 
     void Start()
     {
@@ -18,10 +18,8 @@ public class SwordCollision : MonoBehaviour
     {
         if (collision.GetComponentInParent<EnemyMove>())
         {
-            Debug.Log("EnemyRIP");
             Instantiate(boom, collision.transform.position, collision.transform.rotation);
-            Instantiate(deadBody, collision.transform.position, collision.transform.rotation);
-            Destroy(collision.GetComponentInParent<EnemyMove>().gameObject);
+            collision.GetComponentInParent<Health>().Damage(damage);
         }
     }
 }

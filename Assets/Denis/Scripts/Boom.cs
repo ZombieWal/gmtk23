@@ -11,7 +11,7 @@ public class Boom : MonoBehaviour
         Invoke("Color_white", c);
         float r = Random.Range(0.15f,0.3f);
         Invoke("BoomRip", r);
-        FindObjectOfType<AudioManager>().Play("boom");
+        //FindObjectOfType<AudioManager>().Play("boom");
     }
 
     // Update is called once per frame

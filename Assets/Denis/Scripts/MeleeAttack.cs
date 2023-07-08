@@ -21,18 +21,14 @@ public class MeleeAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            OnAttack();
-        } 
     }
 
-    void OnAttack()
+    public void OnAttack()
     {
         // создаем эффект удара
         if (hitEffect != null)
         {
-            Instantiate(hitEffect, hitStartPosition.position, hitStartPosition.rotation, transform);
+            Instantiate(hitEffect, hitStartPosition.position, hitStartPosition.rotation, hitStartPosition.transform);
         }
         //rb.AddForce(playerMovement.lookDirection.normalized * hitImpulsePlayer, ForceMode2D.Impulse);  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
