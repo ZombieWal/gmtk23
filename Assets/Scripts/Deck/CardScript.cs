@@ -12,6 +12,14 @@ public class CardScript : MonoBehaviour
     public Image cardImage;
     public TMP_Text cardDescription;
     public Button button;
+    public GameObject playerHand;
+    public GameObject fightController;
+
+    private void Start()
+    {
+        playerHand = GameObject.Find("Player Hand");
+        fightController = GameObject.Find("FightController");
+    }
 
     private void Awake()
     {
@@ -21,9 +29,11 @@ public class CardScript : MonoBehaviour
 
     void OnButtonClick()
     {
+        StartCoroutine(playerHand.GetComponent<HandMovement>().PlaceCard(gameObject, new Vector3(0.0f, -2.6f, 0.0f)));
+
         if (cardType == "character")
-        {
-            StartFight();
+        {   
+            fightController.GetComponent<FightController>().StartFight();
         }
     }
 
@@ -31,11 +41,5 @@ public class CardScript : MonoBehaviour
     void Update()
     {
         cardDescription.text = description;
-    }
-
-    //delete me later
-    void StartFight()
-    {
-
     }
 }

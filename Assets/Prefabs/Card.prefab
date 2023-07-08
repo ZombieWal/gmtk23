@@ -53,8 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardType: 
   description: 
+  cardImage: {fileID: 0}
   cardDescription: {fileID: 101222466367332209}
   button: {fileID: 2327976881695392233}
+  playerHand: {fileID: 0}
 --- !u!1 &101222466367332211
 GameObject:
   m_ObjectHideFlags: 0
