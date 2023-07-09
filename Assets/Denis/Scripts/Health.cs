@@ -25,10 +25,6 @@ public class Health : MonoBehaviour
         HealthBarFiller();
         ColorChanger();
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Damage(25);
-        }
     }
 
     void HealthBarFiller()

@@ -15,11 +15,13 @@ public class FightController : MonoBehaviour
 
     public float fightTimer;
     public TMP_Text time_;
+    public GameObject restart;
 
     public GameObject enemy;
     public GameObject[] enemies;
     public bool endOfFight = true;
 
+    public bool j = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +38,24 @@ public class FightController : MonoBehaviour
         GameObject player_ = GameObject.FindGameObjectWithTag("Player");
         if (player_ == null)
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (j)
+            { 
+                  restart.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
+                }
             }
+            else
+            {
+                restart.SetActive(false);
+            }
+        }
+        else
+        {
+            restart.SetActive(false);
         }
 
 
@@ -68,25 +84,6 @@ public class FightController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            SpawnNewEnemy(enemy);
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            StartFight();
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            EndFight();
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SpawnNewPlayer();
-        }
 
     }
 
@@ -156,10 +153,12 @@ public class FightController : MonoBehaviour
     public void RIP()
     {
         EndFight();
+        
     }
 
     public void EndFight()
     {
+        j = true;
         //SpawnNewEnemy(enemy);
         time_.text = "";
         endOfFight = true;

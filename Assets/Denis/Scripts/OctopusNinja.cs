@@ -24,13 +24,7 @@ public class OctopusNinja : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            StartCoroutine(EndOctopusNinja());
-            GetComponentInChildren<OctopusSpawner>().SpawnOctopus(spawnTime);
-            blade.GetComponent<Blade>().StartCutting();
-            isNinjaGame = true;
-        }
+
 
         if (isNinjaGame)
         {
