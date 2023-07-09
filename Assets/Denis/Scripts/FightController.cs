@@ -22,6 +22,7 @@ public class FightController : MonoBehaviour
     public bool endOfFight = true;
 
     public bool j = false;
+    public bool y = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,18 +62,19 @@ public class FightController : MonoBehaviour
 
         if (!endOfFight)
         {
-            fightTimer -= Time.deltaTime;
-            if (fightTimer <= 0)
-            {
-                EndFight();
-            }
-        
+
+                fightTimer -= Time.deltaTime;
+                if (fightTimer < 0)
+                {
+                    EndFight();
+                }
+
             if (time_ != null)
             {
                 if (fightTimer > 0)
                     time_.text = "Time: " + fightTimer.ToString("#.0");
                 else
-                    time_.text = "Time: " +  "0,0";
+                    time_.text = "Time: " + "0,0";
             }
         }
         else
@@ -89,7 +91,7 @@ public class FightController : MonoBehaviour
 
     public void StartFight()
     {
-
+        y = true;
         GameObject player_ = GameObject.FindGameObjectWithTag("Player");
 
         endOfFight = false;
