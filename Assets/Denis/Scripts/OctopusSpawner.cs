@@ -8,18 +8,32 @@ public class OctopusSpawner : MonoBehaviour
 	public GameObject fruitPrefab;
 	public Transform[] spawnPoints;
 
-	public float minDelay = .1f;
-	public float maxDelay = 1f;
+	public float minDelay = .05f;
+	public float maxDelay = .7f;
 
+	private float spawnTime;
 	// Use this for initialization
 	void Start()
 	{
+	}
+
+    private void Update()
+    {
+		if (spawnTime >= 0)
+		{
+			spawnTime -= Time.deltaTime;
+		}
+	}
+
+    public void SpawnOctopus(float spawnTime_)
+    {
+		spawnTime = spawnTime_;
 		StartCoroutine(SpawnFruits());
 	}
 
 	IEnumerator SpawnFruits()
 	{
-		while (true)
+		while (spawnTime > 0 )
 		{
 			float delay = Random.Range(minDelay, maxDelay);
 			yield return new WaitForSeconds(delay);

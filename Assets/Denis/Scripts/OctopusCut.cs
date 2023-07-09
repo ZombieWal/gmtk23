@@ -30,6 +30,9 @@ public class OctopusCut : MonoBehaviour
 
 			GameObject blood = Instantiate(bloodPrefab, transform.position, transform.rotation);
 			Destroy(blood, 3f);
+
+			FindObjectOfType<OctopusNinja>().forceBlow += 0.05f;
+			
 		}
 	}
 

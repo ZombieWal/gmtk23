@@ -110,12 +110,24 @@ public class FightController : MonoBehaviour
 
     public void SpawnNewPlayer()
     {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject newPlayer_ = Instantiate(player, playerPoint.transform.position, playerPoint.transform.rotation);
         var i = 0;
         foreach (GameObject enemy_ in enemies)
         {
             enemy_.GetComponent<EnemyMove>().target = newPlayer_.transform;
             enemy_.GetComponent<EnemyAttacking>().target = newPlayer_.transform;
+            i++;
+        }
+    }
+
+    public void DealDamage(float damage)
+    {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        var i = 0;
+        foreach (GameObject enemy_ in enemies)
+        {
+            enemy_.GetComponent<Health>().Damage(damage);
             i++;
         }
     }

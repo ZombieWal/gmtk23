@@ -8,7 +8,7 @@ public class Blade : MonoBehaviour
 	public GameObject bladeTrailPrefab;
 	public float minCuttingVelocity = .001f;
 
-	bool isCutting = false;
+	public bool isCutting = false;
 
 	Vector2 previousPosition;
 
@@ -17,6 +17,8 @@ public class Blade : MonoBehaviour
 	Rigidbody2D rb;
 	Camera cam;
 	CircleCollider2D circleCollider;
+
+	public GameObject art;
 
 	void Start()
 	{
@@ -28,10 +30,10 @@ public class Blade : MonoBehaviour
 
 
 
-
-	// Update is called once per frame
-	void Update()
+    // Update is called once per frame
+    void Update()
 	{
+		/*
 		if (Input.GetMouseButtonDown(0))
 		{
 			StartCutting();
@@ -40,6 +42,7 @@ public class Blade : MonoBehaviour
 		{
 			StopCutting();
 		}
+		*/
 
 		if (isCutting)
 		{
@@ -74,20 +77,22 @@ public class Blade : MonoBehaviour
 
 
 
-	void StartCutting()
+	public void StartCutting()
 	{
 		currentBladeTrail = Instantiate(bladeTrailPrefab, transform);
 		previousPosition = cam.ScreenToWorldPoint(Input.mousePosition);
 		circleCollider.enabled = false;
 		isCutting = true;
+		art.SetActive(true);
 	}
 
-	void StopCutting()
+	public void StopCutting()
 	{
 		isCutting = false;
 		currentBladeTrail.transform.SetParent(null);
 		Destroy(currentBladeTrail, 2f);
 		circleCollider.enabled = false;
+		art.SetActive(false);
 	}
 
 }

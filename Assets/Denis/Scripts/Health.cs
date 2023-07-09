@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-/* http://www.Mousawi.Dev By @AbdullaMousawi*/
+
 public class Health : MonoBehaviour
 {
     public bool player = false;

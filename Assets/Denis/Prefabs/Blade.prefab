@@ -190,6 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bladeTrailPrefab: {fileID: 8584264044404773498}
   minCuttingVelocity: 0.00005
+  isCutting: 0
+  art: {fileID: 8584264045282818967}
 --- !u!50 &8584264045169802721
 Rigidbody2D:
   serializedVersion: 4
