@@ -40,11 +40,13 @@ public class FightController : MonoBehaviour
                 EndFight();
             }
         }
-
-        if (fightTimer > 0)
-            time_.text = fightTimer.ToString("#.0");
-        else
-            time_.text = "0,0";
+        if (time_ != null)
+        {
+            if (fightTimer > 0)
+                time_.text = fightTimer.ToString("#.0");
+            else
+                time_.text = "0,0";
+        }
 
         var enemyNumber_ = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemyNumber_.Length <= 0)
