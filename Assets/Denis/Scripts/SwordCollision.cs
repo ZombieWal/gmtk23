@@ -5,6 +5,7 @@ using EZCameraShake;
 
 public class SwordCollision : MonoBehaviour
 {
+    public bool player = false;
     public GameObject boom;
     public float damage = 50f;
 
@@ -16,10 +17,21 @@ public class SwordCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponentInParent<EnemyMove>())
+        if (player)
         {
-            Instantiate(boom, collision.transform.position, collision.transform.rotation);
-            collision.GetComponentInParent<Health>().Damage(damage);
+            if (collision.GetComponentInParent<EnemyMove>())
+            {
+                Instantiate(boom, collision.transform.position, collision.transform.rotation);
+                collision.GetComponentInParent<Health>().Damage(damage);
+            }
+        }
+        else
+        {
+            if (collision.GetComponentInParent<PlayerMovement>())
+            {
+                //Instantiate(boom, collision.transform.position, collision.transform.rotation);
+                collision.GetComponentInParent<Health>().Damage(damage);
+            }
         }
     }
 }

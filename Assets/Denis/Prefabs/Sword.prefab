@@ -212,8 +212,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2eef6268219fee4fbec99a67ecf70d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: 1
   boom: {fileID: 943803701987797030, guid: 9cd8e065078ffdf47907f1ade8eeb63d, type: 3}
-  deadBody: {fileID: 7979195593523227012, guid: 1bba81df057605d48a97ad7cc9dcc797, type: 3}
+  damage: 50
 --- !u!114 &6029850169692048986
 MonoBehaviour:
   m_ObjectHideFlags: 0

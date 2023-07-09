@@ -28,8 +28,7 @@ public class FightController : MonoBehaviour
     private void Awake()
     {
         SpawnNewPlayer();
-        SpawnNewEnemy(enemy);
-        SpawnNewEnemy(enemy);
+
     }
 
     // Update is called once per frame
