@@ -72,9 +72,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b73955b8a837e4790c4848c953d153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 2
   rotationSpeed: 4
-  acceleration: 4
+  target: {fileID: 0}
   start_: 0
 --- !u!114 &5579685417806498544
 MonoBehaviour:
@@ -105,10 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c4ae329a8bff6429ffbe82ebc391e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
+  start_: 0
+  hitEffect: {fileID: 2791419959548581601, guid: 02e0b001493ae264f8030c87d0c0fafb, type: 3}
   hitStartPosition: {fileID: 7224516256193632116}
-  attackDelay: 1
-  attackRange: 1
+  attackDelay: 2
+  attackRange: 2.4
 --- !u!1 &5651005723051078702
 GameObject:
   m_ObjectHideFlags: 0

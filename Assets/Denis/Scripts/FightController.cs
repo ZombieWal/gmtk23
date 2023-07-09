@@ -84,6 +84,7 @@ public class FightController : MonoBehaviour
         foreach (GameObject enemy_ in enemies)
         {
             enemy_.GetComponent<EnemyMove>().start_ = true;
+            enemy_.GetComponent<EnemyAttacking>().start_ = true;
         }
 
         GameObject player_ = GameObject.FindGameObjectWithTag("Player");
@@ -101,7 +102,13 @@ public class FightController : MonoBehaviour
     }
     public void SpawnNewPlayer()
     {
-        Instantiate(player, playerPoint.transform.position, playerPoint.transform.rotation);
+        GameObject newPlayer_ = Instantiate(player, playerPoint.transform.position, playerPoint.transform.rotation);
+        var i = 0;
+        foreach (GameObject enemy_ in enemies)
+        {
+            enemy_.GetComponent<EnemyMove>().target = newPlayer_.transform;
+            i++;
+        }
     }
 
     public void Win()
@@ -123,6 +130,7 @@ public class FightController : MonoBehaviour
         {
             enemy_.transform.position = spawnPoints[i].transform.position;
             enemy_.GetComponent<EnemyMove>().start_ = false;
+            enemy_.GetComponent<EnemyAttacking>().start_ = false;
             i++;
         }
 

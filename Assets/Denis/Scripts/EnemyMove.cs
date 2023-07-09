@@ -6,10 +6,8 @@ public class EnemyMove : MonoBehaviour
 {
     public float speed = 9;
     public float rotationSpeed = 1.5f;
-    public float acceleration;
 
-    private Transform target;
-    private float startSpeed;
+    public Transform target;
 
     public bool start_ = false;
     private void Awake()
@@ -25,13 +23,7 @@ public class EnemyMove : MonoBehaviour
 
     private void Update()
     {
-        if (start_)
-        {
-            if (acceleration > 1)
-            {
-                acceleration -= Time.deltaTime;
-            }
-        }
+
     }
 
     void FixedUpdate()
@@ -40,20 +32,7 @@ public class EnemyMove : MonoBehaviour
         {
             if (target != null)
             {
-                if (acceleration > 1)
-                {
-                    startSpeed = speed / acceleration;
-                }
-                else
-                {
-                    startSpeed = speed;
-                }
-
-
-                //var dir = target.position - transform.position;
-                //transform.up = Vector3.MoveTowards(transform.up, dir, rotationSpeed * Time.deltaTime);
-
-                transform.position = Vector3.MoveTowards(transform.position, target.position, startSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             }
             else if (GameObject.Find("RIP_player(Clone)") != null)
             {
@@ -62,7 +41,7 @@ public class EnemyMove : MonoBehaviour
         }
         else
         {
-            transform.position = transform.position;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 

@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class EnemyAttacking : MonoBehaviour
 {
+    public bool start_ = false;
+
     public GameObject hitEffect;
     public Transform hitStartPosition;
 
@@ -24,23 +27,35 @@ public class EnemyAttacking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // поворачиваем удар в направлении курсора мышки
-        lookDirection = target.position - transform.position;
-        // поворачиваем удар в направлении игрока
-        hitStartPosition.rotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
-
-        if (!isAttacking)
+        if (start_)
         {
-            // Если игрок в пределах радиуса атаки и AI не атакует, начать атаку
-            if (Vector2.Distance(transform.position, target.position) <= attackRange)
+            // поворачиваем удар в направлении курсора мышки
+            if (target != null)
             {
-                StartCoroutine(Attack());
+                lookDirection = target.position - transform.position;
+
+                // поворачиваем удар в направлении игрока
+                hitStartPosition.rotation = Quaternion.LookRotation(Vector3.forward, lookDirection);
+
+                if (!isAttacking)
+                {
+                    // Если игрок в пределах радиуса атаки и AI не атакует, начать атаку
+                    if (Vector2.Distance(transform.position, target.position) <= attackRange)
+                    {
+                        StartCoroutine(Attack());
+                    }
+                }
             }
         }
-
     }
 
-    IEnumerator Attack()
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(hitStartPosition.position, attackRange);
+    }
+
+        IEnumerator Attack()
     {
         isAttacking = true;
 

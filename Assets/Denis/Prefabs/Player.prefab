@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9303305b36d72d44b3e8aa9bafdc7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   acceleration: 10
   deceleration: 5
   maxSpeed: 5
@@ -140,6 +140,7 @@ MonoBehaviour:
   deshCD: 2
   hitStartPosition: {fileID: 4716068015053223799}
   lookDirection: {x: 0, y: 0, z: 0}
+  start_: 1
 --- !u!114 &6963329772120887477
 MonoBehaviour:
   m_ObjectHideFlags: 0
