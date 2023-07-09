@@ -55,6 +55,7 @@ public class CardScript : MonoBehaviour
         {
             StartCoroutine(StartNinjaGame(2.0f));
         }
+        
     }
 
     // Update is called once per frame
@@ -66,6 +67,11 @@ public class CardScript : MonoBehaviour
         {
             Destroy(gameObject);
             //StartCoroutine(ShowTooltip(0.1f));
+        }
+
+        if (isPlaced && RhythmGameManager.instance.isActive && playerHand.GetComponent<HandMovement>().isReturned)
+        {
+            Destroy(gameObject);
         }
 
         //add smth on win-loose state for both ninja and rhythm game
