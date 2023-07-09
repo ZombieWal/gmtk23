@@ -57,6 +57,8 @@ MonoBehaviour:
   cardDescription: {fileID: 101222466367332209}
   button: {fileID: 2327976881695392233}
   playerHand: {fileID: 0}
+  fightController: {fileID: 0}
+  enemy: {fileID: 3034442560016709826, guid: f5de9d5936912c840a0f3269718a43d3, type: 3}
 --- !u!1 &101222466367332211
 GameObject:
   m_ObjectHideFlags: 0

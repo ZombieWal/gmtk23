@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class HandMovement : MonoBehaviour
 {
-    public float startTime = 3f;
+    public float startTime = 1f;
     public float movementTime;
     public string handType;
     public GameObject testCard;
     private Vector3 initialPosition;
+    public AudioSource audioSource;
+
 
     public IEnumerator PlaceCard(GameObject card, Vector3 targetPosition)
     {
@@ -41,6 +43,7 @@ public class HandMovement : MonoBehaviour
             //Debug.Log("second move card position is" + cardPos);
             yield return new WaitForEndOfFrame();
         }
+        audioSource.Play();
 
         transform.position = targetPosition;
         card.transform.position = cardTargetPosition;
