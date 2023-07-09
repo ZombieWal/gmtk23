@@ -180,5 +180,9 @@ public class FightController : MonoBehaviour
             player_.transform.position = playerPoint.transform.position;
             player_.GetComponent<PlayerMovement>().start_ = false;
         }
+        SpawnNewEnemy(enemy);
+        SpawnNewEnemy(enemy);
+        SpawnNewEnemy(enemy);
+        SpawnNewEnemy(enemy);
     }
 }

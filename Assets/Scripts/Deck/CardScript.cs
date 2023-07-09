@@ -43,7 +43,7 @@ public class CardScript : MonoBehaviour
 
         if (cardType == "character")
         {
-            StartCoroutine(StartFight(2.0f, true, 2));
+            StartCoroutine(StartFight(2.0f, true, 4));
         }
 
         if (cardType == "lute")
@@ -79,7 +79,7 @@ public class CardScript : MonoBehaviour
 
     public void StartFightF()
     {
-        StartCoroutine(StartFight(2.0f, false, 0));
+        StartCoroutine(StartFight(2.0f, false, 2));
     }
 
     IEnumerator StartFight(float duration, bool player_, int enemys_)

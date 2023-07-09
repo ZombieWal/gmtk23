@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: 0
   boom: {fileID: 7057421168580012185, guid: 0d0163c554bd0f248b9636448d12b153, type: 3}
-  damage: 35
+  damage: 20
 --- !u!95 &7651861094261733115
 Animator:
   serializedVersion: 5
