@@ -30,6 +30,17 @@ public class CardManager : MonoBehaviour
         {
             updateCards();
         } */
+        if (RhythmGameManager.instance.winCond == 2)
+        {
+            //increase players health
+            RhythmGameManager.instance.winCond = 1;
+        }
+
+        if (RhythmGameManager.instance.winCond == 0)
+        {
+            //show player he is looser
+            RhythmGameManager.instance.winCond = 1;
+        }
     }
 
     void GeneratePlayerCards()

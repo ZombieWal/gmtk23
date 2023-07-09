@@ -6,6 +6,7 @@ public class NoteObject : MonoBehaviour
 {
     public bool canBePressed;
     public KeyCode keyToPress;
+    private bool isDestroyed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,11 @@ public class NoteObject : MonoBehaviour
         {
             if (canBePressed)
             {
-                gameObject.SetActive(false);
+                Debug.Log("It's a hit");
+                //gameObject.SetActive(false);
+                isDestroyed = true;
+                Destroy(gameObject);
+                RhythmGameManager.instance.NoteHit();
             }
         }
         
@@ -27,20 +32,22 @@ public class NoteObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Arrow enters the square");
+
         if (other.tag == "Activator")
         {
+            Debug.Log("In hit zone");
             canBePressed = true;
-            RhythmGameManager.instance.NoteHit();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Activator")
+        if (other.tag == "Activator" && !isDestroyed)
         {
+            Debug.Log("Out of hit zone, destoyed: " + isDestroyed);
             canBePressed = false;
             RhythmGameManager.instance.NoteMissed();
-
         }
     }
 }
