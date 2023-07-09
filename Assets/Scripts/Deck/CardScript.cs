@@ -32,8 +32,8 @@ public class CardScript : MonoBehaviour
         StartCoroutine(playerHand.GetComponent<HandMovement>().PlaceCard(gameObject, new Vector3(0.0f, -2.6f, 0.0f)));
 
         if (cardType == "character")
-        {   
-            fightController.GetComponent<FightController>().StartFight();
+        {
+            StartCoroutine(StartFight(5.0f));
         }
     }
 
@@ -41,5 +41,11 @@ public class CardScript : MonoBehaviour
     void Update()
     {
         cardDescription.text = description;
+    }
+
+    IEnumerator StartFight(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        fightController.GetComponent<FightController>().StartFight();
     }
 }
