@@ -419,6 +419,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04680e9c8bbf9454191e2d8e6497f7f1, type: 3}
+--- !u!1 &299335236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299335238}
+  - component: {fileID: 299335237}
+  m_Layer: 0
+  m_Name: RhythmGameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &299335237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299335236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfec6d2f376a4e4ab499e7608ed8fd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &299335238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299335236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.4079256, y: -1.52427, z: 36.76509}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &320111106 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 101222465633628922, guid: 04680e9c8bbf9454191e2d8e6497f7f1, type: 3}
@@ -622,7 +666,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734821878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -813, y: -292, z: -10}
+  m_LocalPosition: {x: -813, y: -308, z: -10}
   m_LocalScale: {x: 14.688956, y: 14.688956, z: 14.688956}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -646,6 +690,7 @@ MonoBehaviour:
   handType: Player
   testCard: {fileID: 1559161597}
   audioSource: {fileID: 734821882}
+  isReturned: 0
 --- !u!82 &734821882
 AudioSource:
   m_ObjectHideFlags: 0
@@ -937,6 +982,10 @@ PrefabInstance:
     - target: {fileID: 101222465633628922, guid: 04680e9c8bbf9454191e2d8e6497f7f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826171734454630368, guid: 04680e9c8bbf9454191e2d8e6497f7f1, type: 3}
+      propertyPath: tooltip
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3826171734454630368, guid: 04680e9c8bbf9454191e2d8e6497f7f1, type: 3}
       propertyPath: playerHand

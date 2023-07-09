@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class HandMovement : MonoBehaviour
 {
-    public float startTime = 1f;
+    public float startTime = 0.5f;
     public float movementTime;
     public string handType;
     public GameObject testCard;
     private Vector3 initialPosition;
     public AudioSource audioSource;
+    public bool isReturned;
 
 
     public IEnumerator PlaceCard(GameObject card, Vector3 targetPosition)
     {
         float elapsedTime = 0.0f;
-        Vector3 cardPos = card.transform.position - new Vector3(0.0f, 2.0f, 0.0f);
+        Vector3 cardPos = card.transform.position - new Vector3(0.0f, 3.0f, 0.0f);
         Vector3 startPos = transform.position;
         initialPosition = startPos;
+        isReturned = false;
 
         //Debug.Log("card position is"+cardPos);
 
@@ -30,7 +32,7 @@ public class HandMovement : MonoBehaviour
         }
         transform.position = cardPos;
 
-        Vector3 cardTargetPosition = new Vector3(targetPosition.x, targetPosition.y+2.0f, card.transform.position.z );
+        Vector3 cardTargetPosition = new Vector3(targetPosition.x, targetPosition.y+3.0f, card.transform.position.z );
         Vector3 cardInitialPosition = card.transform.position;
 
         elapsedTime = 0.0f;
@@ -59,6 +61,7 @@ public class HandMovement : MonoBehaviour
         }
 
         transform.position = initialPosition;
+        isReturned = true;
     }
 
     //delete later
@@ -75,20 +78,20 @@ public class HandMovement : MonoBehaviour
         Vector3 startPos = transform.position;
         Vector3 cardStartPos = card.transform.position;
 
-        Vector3 cardTargetPosition = new Vector3(startPos.x, startPos.y+2.0f, card.transform.position.z);
+        Vector3 cardTargetPosition = new Vector3(startPos.x, startPos.y+3.0f, card.transform.position.z);
 
         while (elapsedTime < startTime)
         {
-            transform.position = Vector3.Lerp(startPos,cardStartPos - new Vector3(0.0f, 2.0f, 0.0f), elapsedTime / startTime);
+            transform.position = Vector3.Lerp(startPos,cardStartPos - new Vector3(0.0f, 3.0f, 0.0f), elapsedTime / startTime);
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
 
-        transform.position = cardStartPos - new Vector3(0.0f, 2.0f, 0.0f);
+        transform.position = cardStartPos - new Vector3(0.0f, 3.0f, 0.0f);
 
         while (elapsedTime < startTime)
         {
-            transform.position = Vector3.Lerp(cardStartPos - new Vector3(0.0f, 2.0f, 0.0f), startPos, elapsedTime / startTime);
+            transform.position = Vector3.Lerp(cardStartPos - new Vector3(0.0f, 3.0f, 0.0f), startPos, elapsedTime / startTime);
             card.transform.position = Vector3.Lerp(cardStartPos, cardTargetPosition, elapsedTime / startTime);
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();

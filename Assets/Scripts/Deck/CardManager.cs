@@ -10,8 +10,8 @@ public class CardManager : MonoBehaviour
     public GameObject card;
     public GameObject cardContainer;
 
-    public List<string> cardTypes = new List<string> { "character", "equipment", "spell" };
-    public List<string> cardDescriptions = new List<string> { "Fight the opponent!", "Boost your damage!", "Do something!" };
+    public List<string> cardTypes = new List<string> { "character", "ninja", "lute" };
+    public List<string> cardDescriptions = new List<string> { "Fight the opponent!", "Boost your damage!", "Boost your health!" };
 
     public bool isRoundFinished = false;
 
@@ -43,11 +43,14 @@ public class CardManager : MonoBehaviour
 
     void InitializeCards()
     {
-        for(int i = 0; i < 3; i++)
-        {
-            playerCards[i].GetComponent<CardScript>().cardType = cardTypes[0];
-            playerCards[i].GetComponent<CardScript>().description = cardDescriptions[0];
-        }
+        playerCards[0].GetComponent<CardScript>().cardType = cardTypes[0];
+        playerCards[0].GetComponent<CardScript>().description = cardDescriptions[0];
+
+        playerCards[1].GetComponent<CardScript>().cardType = cardTypes[1];
+        playerCards[1].GetComponent<CardScript>().description = cardDescriptions[1];
+
+        playerCards[2].GetComponent<CardScript>().cardType = cardTypes[2];
+        playerCards[2].GetComponent<CardScript>().description = cardDescriptions[2];
     }
 
     void updateCards()
@@ -59,5 +62,6 @@ public class CardManager : MonoBehaviour
 
         playerCards.Clear();
         GeneratePlayerCards();
+        InitializeCards();
     }
 }

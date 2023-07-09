@@ -14,13 +14,18 @@ public class CardScript : MonoBehaviour
     public Button button;
     public GameObject playerHand;
     public GameObject fightController;
+    public GameObject rhythmGameController;
     public GameObject enemy;
+    public GameObject tooltip;
     public bool isPlaced = false;
 
     private void Start()
     {
         playerHand = GameObject.Find("Player Hand");
         fightController = GameObject.Find("FightController");
+        rhythmGameController = GameObject.Find("RhythmGameController");
+        //tooltip = GameObject.Find("Tooltip");
+
     }
 
     private void Awake()
@@ -38,12 +43,30 @@ public class CardScript : MonoBehaviour
         {
             StartCoroutine(StartFight(2.0f));
         }
+
+        if (cardType == "lute")
+        {
+            StartCoroutine(StartRhythmGame(2.0f));
+        }
+
+        if (cardType == "ninja")
+        {
+            StartCoroutine(StartNinjaGame(2.0f));
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         cardDescription.text = description;
+
+        if(isPlaced && !fightController.GetComponent<FightController>().endOfFight && playerHand.GetComponent<HandMovement>().isReturned == true)
+        {
+            Destroy(gameObject);
+            //StartCoroutine(ShowTooltip(0.1f));
+        }
+
+        //add smth on win-loose state for both ninja and rhythm game
     }
 
     IEnumerator StartFight(float duration)
@@ -67,5 +90,26 @@ public class CardScript : MonoBehaviour
         {
             StartCoroutine(playerHand.GetComponent<HandMovement>().RemoveCard(gameObject));
         }
+    }
+
+    IEnumerator StartRhythmGame(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        rhythmGameController.GetComponent<RhythmGameController>().StartRhythmGame();
+    }
+
+    IEnumerator ShowTooltip(float duration)
+    {
+        tooltip.GetComponent<TMP_Text>().text = "Rolls reversed!";
+        yield return new WaitForSeconds(duration);
+        tooltip.GetComponent<TMP_Text>().text = "";
+    }
+
+    IEnumerator StartNinjaGame(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        //call for game start
     }
 }
