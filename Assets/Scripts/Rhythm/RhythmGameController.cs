@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RhythmGameController : MonoBehaviour
 {
+    public GameObject buttons;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class RhythmGameController : MonoBehaviour
 
     public void StartRhythmGame()
     {
-
+        buttons.SetActive(true);
+        RhythmGameManager.instance.GetComponent<RhythmGameManager>().isActive = true;
     }
 }

@@ -12,9 +12,12 @@ public class RhythmGameManager : MonoBehaviour
 
     public static RhythmGameManager instance;
 
-    public int rhythmGameScore = 2;
+    public int rhythmGameScore = 1;
     public int scorePerNote = 1;
-    public int rhythmGameWin = 1;
+    public bool isActive = false;
+    public float musicDuration = 53.88f;
+    public int winCond = 1;
+    public GameObject buttons;
 
     // Start is called before the first frame update
     void Start()
@@ -25,22 +28,31 @@ public class RhythmGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!startPlaying)
+        if (isActive)
         {
-            if (Input.anyKeyDown)
+            if (!startPlaying)
             {
                 startPlaying = true;
                 beatScroller.hasStarted = true;
 
                 gameMusic.Play();
+                StartCoroutine(MeasureMusicLength(musicDuration));
             }
-        }
 
-        if(rhythmGameScore <= 0)
-        {
-            startPlaying = false;
-            gameMusic.Stop();
-            rhythmGameWin = 0;
+            if (rhythmGameScore <= 0)
+            {
+                startPlaying = false;
+                gameMusic.Stop();
+                winCond = 0;
+                isActive = false;
+                buttons.SetActive(false);
+            }
+
+            if (winCond == 2)
+            {
+                isActive = false;
+                buttons.SetActive(false);
+            }
         }
     }
 
@@ -54,5 +66,11 @@ public class RhythmGameManager : MonoBehaviour
         Debug.Log("Missed!");
         rhythmGameScore -= scorePerNote;
         Debug.Log("score " + rhythmGameScore);
+    }
+
+    IEnumerator MeasureMusicLength(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        winCond = 2;
     }
 }

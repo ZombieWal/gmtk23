@@ -14,8 +14,6 @@ public class ArrowSpawn : MonoBehaviour
     private float nextSpawnTime; // Time when the next spawn will occur
     private int score;
 
-    public Transform[] arrowSpawnPoints;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +25,16 @@ public class ArrowSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = RhythmGameManager.instance.rhythmGameScore;
-
-        if ( score> 0)
+        if (RhythmGameManager.instance.isActive && RhythmGameManager.instance.winCond == 1)
         {
-            if (Time.time > nextSpawnTime)
+            score = RhythmGameManager.instance.rhythmGameScore;
+            if (score > 0)
             {
-                SpawnArrow();
-                nextSpawnTime += spawnInterval;
+                if (Time.time > nextSpawnTime)
+                {
+                    SpawnArrow();
+                    nextSpawnTime += spawnInterval;
+                }
             }
         }
     }
@@ -42,35 +42,35 @@ public class ArrowSpawn : MonoBehaviour
     void SpawnArrow()
     {
         GameObject arrowToSpawn;
-        Transform spawnPoint;
+        Vector3 spawnPoint;
 
         // Select a different arrow for each beat
         switch (Random.Range(1, 5))
         {
             case 1:
                 arrowToSpawn = arrowUp;
-                spawnPoint = arrowSpawnPoints[1];
+                spawnPoint = new Vector3(1f, -0.56f, 0.0f);
                 break;
             case 2:
                 arrowToSpawn = arrowDown;
-                spawnPoint = arrowSpawnPoints[2];
+                spawnPoint = new Vector3(1f, -1.7f, 0.0f);
                 break;
             case 3:
                 arrowToSpawn = arrowLeft;
-                spawnPoint = arrowSpawnPoints[0];
+                spawnPoint = new Vector3(1f, 0.5f, 0.0f);
                 break;
             case 4:
                 arrowToSpawn = arrowRight;
-                spawnPoint = arrowSpawnPoints[3];
+                spawnPoint = new Vector3(1f, -2.6f, 0.0f);
                 break;
             default:
                 arrowToSpawn = arrowUp;
-                spawnPoint = arrowSpawnPoints[1];
+                spawnPoint = new Vector3(1f, -0.56f, 0.0f);
                 break;
         }
 
-        GameObject arrow = Instantiate(arrowToSpawn, spawnPoint.position, Quaternion.identity);
-        arrow.transform.SetParent(noteHolder, false);
+        GameObject arrow = Instantiate(arrowToSpawn, spawnPoint, Quaternion.identity);
+        arrow.transform.SetParent(noteHolder, true);
 
     }
 }
