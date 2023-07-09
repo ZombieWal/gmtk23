@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Blade
+  - Activator
   layers:
   - Default
   - TransparentFX
@@ -13,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Arrows
   - 
   - 
   - 
@@ -43,6 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Blade
-    uniqueID: 693655137
+  - name: Arrows
+    uniqueID: 2124421939
     locked: 0
