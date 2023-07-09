@@ -485,10 +485,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blade
       objectReference: {fileID: 0}
-    - target: {fileID: 8584264045169802734, guid: fcb3ca5612e94a347804031c66946213, type: 3}
-      propertyPath: minCuttingVelocity
-      value: 0.00005
-      objectReference: {fileID: 0}
     - target: {fileID: 8584264045169802735, guid: fcb3ca5612e94a347804031c66946213, type: 3}
       propertyPath: m_RootOrder
       value: 1
