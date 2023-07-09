@@ -15,6 +15,7 @@ public class CardScript : MonoBehaviour
     public GameObject playerHand;
     public GameObject fightController;
     public GameObject rhythmGameController;
+    public GameObject octopusNinja;
     public GameObject enemy;
     public GameObject tooltip;
     public bool isPlaced = false;
@@ -24,6 +25,7 @@ public class CardScript : MonoBehaviour
         playerHand = GameObject.Find("Player Hand");
         fightController = GameObject.Find("FightController");
         rhythmGameController = GameObject.Find("RhythmGameController");
+        octopusNinja = GameObject.Find("OctopusNinja");
         //tooltip = GameObject.Find("Tooltip");
 
     }
@@ -41,7 +43,7 @@ public class CardScript : MonoBehaviour
 
         if (cardType == "character")
         {
-            StartCoroutine(StartFight(2.0f));
+            StartCoroutine(StartFight(2.0f, true, 2));
         }
 
         if (cardType == "lute")
@@ -69,13 +71,21 @@ public class CardScript : MonoBehaviour
         //add smth on win-loose state for both ninja and rhythm game
     }
 
-    IEnumerator StartFight(float duration)
+    public void StartFightF()
+    {
+        StartCoroutine(StartFight(2.0f, false, 0));
+    }
+
+    IEnumerator StartFight(float duration, bool player_, int enemys_)
     {
         yield return new WaitForSeconds(duration);
+        if(player_)
+            fightController.GetComponent<FightController>().SpawnNewPlayer();
 
-        fightController.GetComponent<FightController>().SpawnNewPlayer();
-        fightController.GetComponent<FightController>().SpawnNewEnemy(enemy);
-        fightController.GetComponent<FightController>().SpawnNewEnemy(enemy);
+        for (int i = 0; i < enemys_; i++)
+        {
+            fightController.GetComponent<FightController>().SpawnNewEnemy(enemy);
+        }
 
         yield return new WaitForSeconds(0.2f);
 
@@ -109,6 +119,8 @@ public class CardScript : MonoBehaviour
     IEnumerator StartNinjaGame(float duration)
     {
         yield return new WaitForSeconds(duration);
+
+        octopusNinja.GetComponent<OctopusNinja>().StartOctopusNinja();
 
         //call for game start
     }

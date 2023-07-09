@@ -42,6 +42,14 @@ public class OctopusNinja : MonoBehaviour
 
     }
 
+    public void StartOctopusNinja()
+    {
+        StartCoroutine(EndOctopusNinja());
+        GetComponentInChildren<OctopusSpawner>().SpawnOctopus(spawnTime);
+        blade.GetComponent<Blade>().StartCutting();
+        isNinjaGame = true;
+    }
+
 
     IEnumerator EndOctopusNinja()
     {
@@ -54,5 +62,7 @@ public class OctopusNinja : MonoBehaviour
         else if(forceBlow >= 1)
             FindObjectOfType<FightController>().DealDamage(40);
         forceBlow = 0;
+
+        FindObjectOfType<CardScript>().StartFightF();
     }
 }

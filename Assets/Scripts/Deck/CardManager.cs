@@ -11,7 +11,7 @@ public class CardManager : MonoBehaviour
     public GameObject cardContainer;
 
     public List<string> cardTypes = new List<string> { "character", "ninja", "lute" };
-    public List<string> cardDescriptions = new List<string> { "Fight the opponent!", "Boost your damage!", "Boost your health!" };
+    public List<string> cardDescriptions = new List<string> { "Mighty Warrior!", "Force blow!", "Boost your health!" };
 
     public bool isRoundFinished = false;
 

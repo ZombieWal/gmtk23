@@ -9,6 +9,9 @@ public class SwordCollision : MonoBehaviour
     public GameObject boom;
     public float damage = 50f;
 
+
+    private HashSet<GameObject> damagedObjects = new HashSet<GameObject>();
+
     void Start()
     {
         
@@ -17,6 +20,13 @@ public class SwordCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Проверяем, был ли этот объект уже поврежден
+        if (damagedObjects.Contains(collision.gameObject))
+        {
+            // Если объект уже поврежден, не наносим ему урон снова
+            return;
+        }
+
         if (player)
         {
             if (collision.GetComponentInParent<EnemyMove>())

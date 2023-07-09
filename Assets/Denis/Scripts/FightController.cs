@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class FightController : MonoBehaviour
 {
@@ -17,12 +18,12 @@ public class FightController : MonoBehaviour
 
     public GameObject enemy;
     public GameObject[] enemies;
-    public bool endOfFight;
+    public bool endOfFight = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        time_.text = "";
     }
 
     private void Awake()
@@ -32,6 +33,16 @@ public class FightController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject player_ = GameObject.FindGameObjectWithTag("Player");
+        if (player_ == null)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+
+
         if (!endOfFight)
         {
             fightTimer -= Time.deltaTime;
@@ -39,15 +50,17 @@ public class FightController : MonoBehaviour
             {
                 EndFight();
             }
+        
+            if (time_ != null)
+            {
+                if (fightTimer > 0)
+                    time_.text = "Time: " + fightTimer.ToString("#.0");
+                else
+                    time_.text = "Time: " +  "0,0";
+            }
         }
-        if (time_ != null)
-        {
-            if (fightTimer > 0)
-                time_.text = fightTimer.ToString("#.0");
-            else
-                time_.text = "0,0";
-        }
-
+        else
+            time_.text = "";
         var enemyNumber_ = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemyNumber_.Length <= 0)
         {
@@ -103,9 +116,12 @@ public class FightController : MonoBehaviour
 
     public void SpawnNewEnemy(GameObject enemy)
     {
-        GameObject curremtPoint = spawnPoints[curremtPointIndex];
-        Instantiate(enemy, curremtPoint.transform.position, curremtPoint.transform.rotation);
-        curremtPointIndex++;
+        if (spawnPoints.Length >= curremtPointIndex)
+        {
+            GameObject curremtPoint = spawnPoints[curremtPointIndex];
+            Instantiate(enemy, curremtPoint.transform.position, curremtPoint.transform.rotation);
+            curremtPointIndex++;
+        }
     }
 
     public void SpawnNewPlayer()
@@ -144,6 +160,8 @@ public class FightController : MonoBehaviour
 
     public void EndFight()
     {
+        //SpawnNewEnemy(enemy);
+        time_.text = "";
         endOfFight = true;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         var i = 0;
