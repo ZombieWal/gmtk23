@@ -12,7 +12,7 @@ public class RhythmGameManager : MonoBehaviour
 
     public static RhythmGameManager instance;
 
-    public int rhythmGameScore = 6;
+    public int rhythmGameScore = 7;
     public int scorePerNote = 1;
     public bool isActive = false;
     public float musicDuration = 53.88f;
@@ -49,6 +49,11 @@ public class RhythmGameManager : MonoBehaviour
                 isActive = false;
                 buttons.SetActive(false);
                 backgroundMusicManager.GetComponent<AudioSource>().mute = false;
+                if (GameObject.FindGameObjectWithTag("Player") != null)
+                {
+                    player = GameObject.FindGameObjectWithTag("Player");
+                    player.GetComponent<Health>().Heal(20f);
+                }
             }
 
             if (winCond == 2)
@@ -56,8 +61,11 @@ public class RhythmGameManager : MonoBehaviour
                 isActive = false;
                 buttons.SetActive(false);
                 backgroundMusicManager.GetComponent<AudioSource>().mute = false;
-                player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Health>().Heal(100f);
+                if (GameObject.FindGameObjectWithTag("Player") != null)
+                {
+                    player = GameObject.FindGameObjectWithTag("Player");
+                    player.GetComponent<Health>().Heal(100f);
+                }
             }
         }
     }

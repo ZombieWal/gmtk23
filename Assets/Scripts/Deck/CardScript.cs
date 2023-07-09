@@ -74,6 +74,11 @@ public class CardScript : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (isPlaced && playerHand.GetComponent<HandMovement>().isReturned && octopusNinja.GetComponent<OctopusNinja>().isNinjaGame)
+        {
+            Destroy(gameObject);
+        }
+
         //add smth on win-loose state for both ninja and rhythm game
     }
 
