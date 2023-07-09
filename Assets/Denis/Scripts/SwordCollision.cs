@@ -29,7 +29,7 @@ public class SwordCollision : MonoBehaviour
         {
             if (collision.GetComponentInParent<PlayerMovement>())
             {
-                //Instantiate(boom, collision.transform.position, collision.transform.rotation);
+                Instantiate(boom, collision.transform.position, collision.transform.rotation);
                 collision.GetComponentInParent<Health>().Damage(damage);
             }
         }

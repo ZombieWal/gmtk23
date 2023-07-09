@@ -11,9 +11,11 @@ public class EnemyAttacking : MonoBehaviour
     public Transform hitStartPosition;
 
     public float attackDelay = 1.0f;
+    public float waitInPlace = 0.2f;
+    public float delayBeforeAttack = .3f;
     public float attackRange = 1.0f;
 
-    private Transform target;
+    public Transform target;
 
     private bool isAttacking = false;
     private Vector3 lookDirection;
@@ -55,14 +57,22 @@ public class EnemyAttacking : MonoBehaviour
         Gizmos.DrawWireSphere(hitStartPosition.position, attackRange);
     }
 
-        IEnumerator Attack()
+    IEnumerator Attack()
     {
         isAttacking = true;
+        GetComponentInParent<EnemyMove>().start_ = false;
+
+        // Стоим на месте
+        yield return new WaitForSeconds(delayBeforeAttack);
 
         if (hitEffect != null)
         {
             Instantiate(hitEffect, hitStartPosition.position, hitStartPosition.rotation, hitStartPosition.transform);
         }
+
+        // Ждем после атаки
+        yield return new WaitForSeconds(waitInPlace);
+        GetComponentInParent<EnemyMove>().start_ = true;
 
         // Ждем перед следующей атакой
         yield return new WaitForSeconds(attackDelay);

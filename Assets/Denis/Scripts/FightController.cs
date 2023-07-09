@@ -77,7 +77,8 @@ public class FightController : MonoBehaviour
 
     public void StartFight()
     {
-        
+
+        GameObject player_ = GameObject.FindGameObjectWithTag("Player");
 
         endOfFight = false;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -85,9 +86,13 @@ public class FightController : MonoBehaviour
         {
             enemy_.GetComponent<EnemyMove>().start_ = true;
             enemy_.GetComponent<EnemyAttacking>().start_ = true;
+            if (player_ != null)
+            {
+                enemy_.GetComponent<EnemyMove>().target = player_.transform;
+                enemy_.GetComponent<EnemyAttacking>().target = player_.transform;
+            }
         }
 
-        GameObject player_ = GameObject.FindGameObjectWithTag("Player");
         if (player_ != null)
         {
             player_.GetComponent<PlayerMovement>().start_ = true;
@@ -108,6 +113,7 @@ public class FightController : MonoBehaviour
         foreach (GameObject enemy_ in enemies)
         {
             enemy_.GetComponent<EnemyMove>().target = newPlayer_.transform;
+            enemy_.GetComponent<EnemyAttacking>().target = newPlayer_.transform;
             i++;
         }
     }
