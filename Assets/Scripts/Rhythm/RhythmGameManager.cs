@@ -19,6 +19,7 @@ public class RhythmGameManager : MonoBehaviour
     public int winCond = 1;
     public GameObject buttons;
     public GameObject backgroundMusicManager;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,8 @@ public class RhythmGameManager : MonoBehaviour
                 isActive = false;
                 buttons.SetActive(false);
                 backgroundMusicManager.GetComponent<AudioSource>().mute = false;
+                player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Health>().Heal(100f);
             }
         }
     }

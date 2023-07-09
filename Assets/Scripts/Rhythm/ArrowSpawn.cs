@@ -11,7 +11,7 @@ public class ArrowSpawn : MonoBehaviour
     public Transform noteHolder;
 
     private float spawnInterval; // Time between each spawn
-    private float nextSpawnTime; // Time when the next spawn will occur
+    public float nextSpawnTime; // Time when the next spawn will occur
     private int score;
 
     // Start is called before the first frame update
