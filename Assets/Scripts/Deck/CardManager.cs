@@ -26,10 +26,10 @@ public class CardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isRoundFinished)
+        /*if (isRoundFinished)
         {
             updateCards();
-        } 
+        } */
     }
 
     void GeneratePlayerCards()
