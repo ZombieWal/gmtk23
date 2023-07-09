@@ -43,6 +43,7 @@ public class RhythmGameManager : MonoBehaviour
 
             if (rhythmGameScore <= 0)
             {
+                FindObjectOfType<CardScript>().StartFightF();
                 startPlaying = false;
                 gameMusic.Stop();
                 winCond = 0;
@@ -58,6 +59,7 @@ public class RhythmGameManager : MonoBehaviour
 
             if (winCond == 2)
             {
+                FindObjectOfType<CardScript>().StartFightF();
                 isActive = false;
                 buttons.SetActive(false);
                 backgroundMusicManager.GetComponent<AudioSource>().mute = false;

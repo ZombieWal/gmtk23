@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 1
-  boom: {fileID: 943803701987797030, guid: 9cd8e065078ffdf47907f1ade8eeb63d, type: 3}
+  boom: {fileID: 7057421168580012185, guid: 0d0163c554bd0f248b9636448d12b153, type: 3}
   damage: 20
 --- !u!114 &6029850169692048986
 MonoBehaviour:

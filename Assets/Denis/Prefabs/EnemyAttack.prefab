@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 0
-  boom: {fileID: 7057421168580012185, guid: 0d0163c554bd0f248b9636448d12b153, type: 3}
-  damage: 20
+  boom: {fileID: 7057421168580012185, guid: 5be170ee852f33a42a2554609fae45f2, type: 3}
+  damage: 15
 --- !u!95 &7651861094261733115
 Animator:
   serializedVersion: 5

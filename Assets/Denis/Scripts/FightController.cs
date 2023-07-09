@@ -115,7 +115,7 @@ public class FightController : MonoBehaviour
 
     public void SpawnNewEnemy(GameObject enemy)
     {
-        if (spawnPoints.Length >= curremtPointIndex)
+        if (spawnPoints.Length > curremtPointIndex)
         {
             GameObject curremtPoint = spawnPoints[curremtPointIndex];
             Instantiate(enemy, curremtPoint.transform.position, curremtPoint.transform.rotation);

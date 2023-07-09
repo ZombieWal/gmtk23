@@ -22,7 +22,7 @@ public class Boom : MonoBehaviour
 
     public void Color_white()
     {
-        GetComponent<SpriteRenderer>().color = Color.white;
+        //GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public void BoomRip()
