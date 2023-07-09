@@ -12,12 +12,13 @@ public class RhythmGameManager : MonoBehaviour
 
     public static RhythmGameManager instance;
 
-    public int rhythmGameScore = 1;
+    public int rhythmGameScore = 6;
     public int scorePerNote = 1;
     public bool isActive = false;
     public float musicDuration = 53.88f;
     public int winCond = 1;
     public GameObject buttons;
+    public GameObject backgroundMusicManager;
 
     // Start is called before the first frame update
     void Start()
@@ -46,12 +47,14 @@ public class RhythmGameManager : MonoBehaviour
                 winCond = 0;
                 isActive = false;
                 buttons.SetActive(false);
+                backgroundMusicManager.GetComponent<AudioSource>().mute = false;
             }
 
             if (winCond == 2)
             {
                 isActive = false;
                 buttons.SetActive(false);
+                backgroundMusicManager.GetComponent<AudioSource>().mute = false;
             }
         }
     }
