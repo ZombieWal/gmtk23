@@ -30,6 +30,7 @@ public class NoteObject : MonoBehaviour
         if (other.tag == "Activator")
         {
             canBePressed = true;
+            RhythmGameManager.instance.NoteHit();
         }
     }
 
@@ -38,6 +39,8 @@ public class NoteObject : MonoBehaviour
         if (other.tag == "Activator")
         {
             canBePressed = false;
+            RhythmGameManager.instance.NoteMissed();
+
         }
     }
 }
