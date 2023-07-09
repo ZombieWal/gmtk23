@@ -13,7 +13,7 @@ public class OctopusNinja : MonoBehaviour
     public TMP_Text textForceBlow;
     public float forceBlow = 0f;
 
-    private bool isNinjaGame;
+    public bool isNinjaGame;
     // Start is called before the first frame update
     void Start()
     {
