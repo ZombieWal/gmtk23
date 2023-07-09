@@ -14,6 +14,8 @@ public class CardScript : MonoBehaviour
     public Button button;
     public GameObject playerHand;
     public GameObject fightController;
+    public GameObject enemy;
+    public bool isPlaced = false;
 
     private void Start()
     {
@@ -30,10 +32,11 @@ public class CardScript : MonoBehaviour
     void OnButtonClick()
     {
         StartCoroutine(playerHand.GetComponent<HandMovement>().PlaceCard(gameObject, new Vector3(0.0f, -2.6f, 0.0f)));
+        isPlaced = true;
 
         if (cardType == "character")
         {
-            StartCoroutine(StartFight(5.0f));
+            StartCoroutine(StartFight(2.0f));
         }
     }
 
@@ -46,6 +49,23 @@ public class CardScript : MonoBehaviour
     IEnumerator StartFight(float duration)
     {
         yield return new WaitForSeconds(duration);
+
+        fightController.GetComponent<FightController>().SpawnNewPlayer();
+        fightController.GetComponent<FightController>().SpawnNewEnemy(enemy);
+        fightController.GetComponent<FightController>().SpawnNewEnemy(enemy);
+
+        yield return new WaitForSeconds(0.2f);
+
         fightController.GetComponent<FightController>().StartFight();
+    }
+
+    IEnumerator CheckFightEnd()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        if (fightController.GetComponent<FightController>().endOfFight && isPlaced)
+        {
+            StartCoroutine(playerHand.GetComponent<HandMovement>().RemoveCard(gameObject));
+        }
     }
 }

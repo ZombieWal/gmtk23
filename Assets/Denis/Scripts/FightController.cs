@@ -17,7 +17,7 @@ public class FightController : MonoBehaviour
 
     public GameObject enemy;
     public GameObject[] enemies;
-    private bool endOfFight;
+    public bool endOfFight;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +27,6 @@ public class FightController : MonoBehaviour
 
     private void Awake()
     {
-        SpawnNewPlayer();
-
     }
 
     // Update is called once per frame
@@ -79,6 +77,8 @@ public class FightController : MonoBehaviour
 
     public void StartFight()
     {
+        
+
         endOfFight = false;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy_ in enemies)
@@ -99,6 +99,7 @@ public class FightController : MonoBehaviour
         Instantiate(enemy, curremtPoint.transform.position, curremtPoint.transform.rotation);
         curremtPointIndex++;
     }
+
     public void SpawnNewPlayer()
     {
         Instantiate(player, playerPoint.transform.position, playerPoint.transform.rotation);
